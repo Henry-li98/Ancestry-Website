@@ -1,0 +1,48 @@
+Layer 1 — Core Foundations
+Objective: Basic working app. Install Python 3, Git, and VS Code or PyCharm.
+Learn Python syntax, functions, data structures. Learn HTML, CSS, JavaScript fundamentals.
+Pick framework: Flask (lightweight) or Django (full-stack). Use SQLite for local database.
+Version control: GitHub repo.
+Deliverable: Local app that lets user add family members, relationships, and display them in a simple list.
+
+Layer 2 — Data Modeling & API
+Objective: Structured, queryable family catalog. Use SQLAlchemy or Django ORM for database interaction.
+Create tables: People, Relationships, Notes, Documents. Implement REST API endpoints (CRUD for family data).
+Add JS frontend calls to API. Deliverable: Local ancestry catalog with searchable, updatable records.
+
+Layer 3 — Containerization
+Objective: Make app portable. Learn Docker basics (images, containers, volumes, networks).
+Dockerize app. Use Docker Compose for multi-service setup (app + DB).
+Store secrets/configs in .env files.
+Deliverable: App runs consistently inside Docker, independent of host system.
+
+Layer 4 — Deployment & CI/CD
+Objective: Automate delivery, deploy online. Learn GitHub Actions or GitLab CI.
+Set pipeline: build → test → deploy. Deploy app to hosting (Heroku, Render, AWS EC2, DigitalOcean).
+Configure Nginx reverse proxy. Add HTTPS with Let’s Encrypt or managed TLS.
+Deliverable: Publicly accessible ancestry website with auto-deployment from repo.
+
+Layer 5 — Infrastructure as Code
+Objective: Infra is reproducible. Learn Terraform: provision servers, networking, storage.
+Optionally: Ansible for configuration mgmt. Use secrets manager for DB passwords and API keys.
+Deliverable: Infra deployable in minutes via Terraform.
+
+Layer 6 — Monitoring & Logging
+Objective: Visibility into system. Add Prometheus for metrics. Build Grafana dashboards for site performance and DB queries.
+Implement central logging (ELK or EFK stack). Deliverable: Metrics and logs accessible from dashboards with alerts configured.
+
+Layer 7 — Scaling & Orchestration
+Objective: Production-grade. Learn Kubernetes basics. Deploy app + DB to Kubernetes cluster.
+Package with Helm. Configure load balancing and auto-scaling.
+Deliverable: Ancestry site runs on scalable Kubernetes infra.
+
+Layer 8 — Security & Reliability
+Objective: Secure and resilient system. IAM: roles and permissions.
+Secrets: Vault or cloud KMS. Automated DB backups and recovery. Vulnerability scans.
+Deliverable: Secured site with backups, access controls, and recovery plans.
+
+Layer 9 — Long-Term Extensions
+Objective: Advanced features. Switch to Neo4j graph database for complex relationships.
+Add genealogy API integrations. Implement user accounts and role-based access.
+Build interactive family tree visualization with React or D3.js.
+Deliverable: Full-featured ancestry platform with advanced visualization and external data integration.
