@@ -11,6 +11,9 @@ def get_name():
             print("please input the name again")
         elif confirm == 'yes':
             return first_name, last_name
+def family_name():
+    for i in range(1, len(names), 2):
+        print(names[i])
 
 #most likely once above def is executed, have it input into a list
 names = []
@@ -19,9 +22,6 @@ names.append(str(find_name))
 
 print(f"Here is the current unordered list of names {', '.join(names)}")
 
-def family_name():
-    for i in range(1, len(names), 2):
-        print(names[i])
 
 
 # make a def that splits that reads and organizes the last names of each person in the list to different groups,
