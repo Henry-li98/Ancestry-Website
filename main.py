@@ -19,5 +19,10 @@ names.append(str(find_name))
 
 print(f"Here is the current unordered list of names {', '.join(names)}")
 
+def family_name():
+    for i in range(1, len(names), 2):
+        print(names[i])
+
+
 # make a def that splits that reads and organizes the last names of each person in the list to different groups,
 # def family_name(last_name):
