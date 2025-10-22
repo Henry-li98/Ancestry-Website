@@ -16,7 +16,7 @@ class Todo(db.Model):
         return '<Task %r>' % self.id
 
 
-@app.route('/Family_Tree', methods=["GET"])
+@app.route('/', methods=["GET"])
 def index():
     return render_template('index.html')
 
@@ -24,30 +24,10 @@ def index():
 if __name__ == "__main__":
     app.run(debug=True)
 
-#
-# def get_name():
-#     while True:
-#         first_name = input("Please input first name: ")
-#         last_name = input("Please input last name: ")
-#
-#         print(f"You wrote: {first_name} {last_name}")
-#         confirm = input("please confirm that this is correct (yes/no)").lower()
-#
-#         if confirm == 'no':
-#             print("please input the name again")
-#         elif confirm == 'yes':
-#             return first_name, last_name
-# def family_name():
-#     for i in range(1, len(names), 2):
-#         print(names[i])
-#
-# #most likely once above def is executed, have it input into a list
-# names = []
-# find_name = get_name()
-# names.append(str(find_name))
-#
-# print(f"Here is the current unordered list of names {', '.join(names)}")
+# make a python function here and make another route that would call this function, the java script in the html should query the python
+# query.py is the main backend part of the entire project, standalone it should hold most of the logic, flask is the intermediary that allows it to be the front end
 
+# query.py --> main meat of the project
+# app.py --> get chat GPT to build this, not as important as working on the query.py, this is mostly a config file
+# theorydraft./html --> index.html
 
-# make a def that splits that reads and organizes the last names of each person in the list to different groups,
-# def family_name(last_name):
