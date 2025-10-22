@@ -1,26 +1,41 @@
 import os
+import json
+
+
 def get_name():
     while True:
         first_name = input("Please input first name: ")
         last_name = input("Please input last name: ")
+        birthday = input("please input the date of birth (MM/DD/YYY): ")
 
-        print(f"You wrote: {first_name} {last_name}")
+        print(f"You wrote: {first_name} {last_name} {birthday}")
         confirm = input("please confirm that this is correct (yes/no)").lower()
 
+        user_data = {
+            "f_name": first_name,
+            "l_name": last_name,
+            "b_day": birthday
+        }
+
         if confirm == 'no':
+            # add a way to check and ask which part should be redone
             print("please input the name again")
         elif confirm == 'yes':
-            return first_name, last_name
-def family_name():
-    for i in range(1, len(names), 2):
-        print(names[i])
+            return user_data
 
-#most likely once above def is executed, have it input into a list
-names = []
-find_name = get_name()
-names.append(str(find_name))
 
-print(f"Here is the current unordered list of names {', '.join(names)}")
+def save_to_json(data, file_name="ancestors.json"):
+    with open(file_name, "w") as file:
+        json.dump(data, file, indent=4)
+    json_string = json.dumps(data)
+
+def main():
+    ancestor = get_name()
+    save_to_json(ancestor)
+    print("Ancestor information saved. ")
+
+# def relation():
+#     connection = input("how is this person related within the family tree?")
 
 
 # make a def that splits that reads and organizes the last names of each person in the list to different groups,
