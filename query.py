@@ -29,6 +29,14 @@ def save_to_json(data, file_name="ancestors.json"):
         json.dump(data, file, indent=4)
     json_string = json.dumps(data)
 
+
+def display_json(data, file_name="ancestors.json"):
+    with open(file_name, "r") as file:
+        data = json.load(file)
+        print(data)
+        return data
+0
+
 def main():
     ancestor = get_name()
     save_to_json(ancestor)

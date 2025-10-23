@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+import query
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
@@ -24,10 +25,14 @@ def index():
 if __name__ == "__main__":
     app.run(debug=True)
 
+
+@app.route('/input', methods=["GET"])
+def main():
+    return "ancestor information saved"
+
 # make a python function here and make another route that would call this function, the java script in the html should query the python
 # query.py is the main backend part of the entire project, standalone it should hold most of the logic, flask is the intermediary that allows it to be the front end
 
 # query.py --> main meat of the project
 # app.py --> get chat GPT to build this, not as important as working on the query.py, this is mostly a config file
 # theorydraft./html --> index.html
-
