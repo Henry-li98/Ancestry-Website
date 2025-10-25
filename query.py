@@ -1,65 +1,75 @@
-import os
 import json
 import random
 
 
-class InfoCollect:
-    def __init__(self, birthday, first_name, last_name, mother=None, father=None):
-        self.first_name = []
-        self.last_name = []
-        self.birthday = []
+class Person:
+    def __init__(self, birthday, first_name, last_name, partner=None, mother=None, father=None):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.birthday = birthday
         self.id = random.randint(0, 999999)
         self.mother = mother
         self.father = father
+        self.partner = partner
 
-    def info(self):
-        while True:
-            self.first_name = input("Please input first name: ")
-            self.last_name = input("Please input last name: ")
-            self.birthday = input("please input the date of birth (MM/DD/YYY): ")
-            self.mother = input("please input the name of your Mother: ")
-            self.father = input("please input the name of your father: ")
-
-            print(f"your first name is: {self.first_name}/n "
-                  f"last name is: {self.last_name} /n "
-                  f"birthday: {self.birthday} /n"
-                  f"mother: {self.mother} /n"
-                  f"father: {self.father} /n")
-
-            confirm = input("please confirm that this is correct (yes/no)").lower()
-
-            user_data = {
-                "f_name": self.first_name,
-                "l_name": self.last_name,
-                "b_day": self.birthday,
-                "mother": self.mother,
-                "father": self.father
-            }
-
-            if confirm == 'no':
-                # add a way to check and ask which part should be redone
-                print("please input the name again")
-            elif confirm == 'yes':
-                return user_data
     def save_to_json(self, user_data, file_name="ancestors.json"):
-
+        user_data = {
+            "f_name": self.first_name,
+            "l_name": self.last_name,
+            "b_day": self.birthday,
+            "partner": self.partner,
+            "mother": self.mother,
+            "father": self.father,
+            "id": self.id
+        }
         with open(file_name, "w") as file:
             json.dump(user_data, file, indent=4)
-        print("information saved")
+        print("information saved.")
 
+
+def collect_info():
+    while True:
+        first_name = input("Please input first name: ")
+        last_name = input("Please input last name: ")
+        birthday = input("please input the date of birth (MM/DD/YYY): ")
+        partner = input("please input the name of your partner: ")
+        mother = input("please input the name of your Mother: ")
+        father = input("please input the name of your father: ")
+
+        print(f"your first name is: {first_name}/n "
+              f"last name is: {last_name} /n "
+              f"birthday: {birthday} /n"
+              f"partner: {partner} /n"
+              f"mother: {mother} /n"
+              f"father: {father} /n")
+
+        confirm = input("please confirm that this is correct (yes/no)").lower()
+
+        if confirm == 'no':
+            # add a way to check and ask which part should be redone
+            print("please input information again")
+            continue
+        elif confirm == 'yes':
+            person = Person(first_name, last_name, birthday, partner, mother, father)
+            return person
+        else:
+            print("invalid input, please type 'yes' or 'no'. ")
+            continue
+
+#refactor the class int oa def that displays a singular tree
 class TreeDisplay:
     def __init__(self, filename="ancestors.json"):
         self.filename = filename
-    def read_json(self, data, file_name="ancestors.json"):
-        with open(file_name, "r") as file:
+
+    def read_json(self):
+        with open(self.filename, "r") as file:
             data = json.load(file)
             print(data)
-            return data
 
 
-def main():
-    ancestor = get_name()
-    save_to_json(ancestor)
+def Main:
+    ancestor = InfoCollect()
+    TreeDisplay(type(ancestor))
     print("Ancestor information saved. ")
 # use Pythonanywhere.com to host the server
 
