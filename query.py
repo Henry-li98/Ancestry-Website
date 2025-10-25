@@ -25,6 +25,7 @@ class Person:
         with open(file_name, "w") as file:
             json.dump(user_data, file, indent=4)
         print("information saved.")
+        return user_data, file_name
 
 
 def collect_info():
@@ -56,21 +57,17 @@ def collect_info():
             print("invalid input, please type 'yes' or 'no'. ")
             continue
 
-#refactor the class int oa def that displays a singular tree
-class TreeDisplay:
-    def __init__(self, filename="ancestors.json"):
-        self.filename = filename
 
-    def read_json(self):
-        with open(self.filename, "r") as file:
-            data = json.load(file)
-            print(data)
+def tree_display(filename="ancestors.json"):
+    with open(filename, "r") as file:
+        data = json.load(file)
+        print(data)
 
 
-def Main():
-    ancestor = InfoCollect()
-    TreeDisplay(type(ancestor))
-    print("Ancestor information saved. ")
+def main():
+    ancestor = collect_info()
+    tree_display()
+    print("person information displayed. ")
 # use Pythonanywhere.com to host the server
 
 
