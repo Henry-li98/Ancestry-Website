@@ -25,7 +25,7 @@ class Person:
         with open(file_name, "w") as file:
             json.dump(user_data, file, indent=4)
         print("information saved.")
-        return user_data, file_name
+        return file_name
 
 
 def collect_info():
@@ -66,8 +66,7 @@ def tree_display(filename="ancestors.json"):
 
 def main():
     ancestor = collect_info()
-    tree_display()
-    print("person information displayed. ")
+    print(tree_display())
 # use Pythonanywhere.com to host the server
 
 
