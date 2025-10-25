@@ -67,7 +67,7 @@ class TreeDisplay:
             print(data)
 
 
-def Main:
+def Main():
     ancestor = InfoCollect()
     TreeDisplay(type(ancestor))
     print("Ancestor information saved. ")
