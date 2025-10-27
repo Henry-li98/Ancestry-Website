@@ -25,7 +25,6 @@ class Person:
         with open(file_name, "w") as file:
             json.dump(user_data, file, indent=4)
         print("information saved.")
-        return file_name
 
 
 def collect_info():
@@ -64,9 +63,15 @@ def tree_display(filename="ancestors.json"):
         print(data)
 
 
+# display the previous x generations depending on how far back/forward the user wants to see
+# find a way scan/ sort the list in a way that checks that there is descendants/ancestors
+# def branch_find():
+
 def main():
-    collect_info()
-    print(tree_display())
+    ancestor = collect_info()
+    ancestor.save_to_json()
+    print("displaying tree")
+    tree_display()
 # use Pythonanywhere.com to host the server
 
 
