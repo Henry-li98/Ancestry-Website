@@ -12,7 +12,7 @@ class Person:
         self.father = father
         self.partner = partner
 
-    def save_to_json(self, user_data, file_name="ancestors.json"):
+    def save_to_json(self, file_name="ancestors.json"):
         user_data = {
             "f_name": self.first_name,
             "l_name": self.last_name,
@@ -35,7 +35,7 @@ def collect_info():
         birthday = input("please input the date of birth (MM/DD/YYY): ")
         partner = input("please input the name of your partner: ")
         mother = input("please input the name of your Mother: ")
-        father = input("please input the name of your father: ")
+        father = input("please input the name of your Father: ")
 
         print(f"your first name is: {first_name}/n "
               f"last name is: {last_name} /n "
@@ -65,7 +65,7 @@ def tree_display(filename="ancestors.json"):
 
 
 def main():
-    ancestor = collect_info()
+    collect_info()
     print(tree_display())
 # use Pythonanywhere.com to host the server
 
