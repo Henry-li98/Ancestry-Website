@@ -1,12 +1,11 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from query import tree_display, collect_info, Person
+from datetime import datetime
 
-node = Person
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
-from datetime import datetime
 
 
 class Todo(db.Model):
@@ -27,12 +26,6 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 
-@app.route('/person', methods=["GET"])
-def ancestor():
-    user = node.save_to_json
-    return user
-
-
 # double check above on how to implement this
 
 @app.route('/tree', methods=["GET"])
@@ -43,9 +36,14 @@ def tree():
 
 @app.route('/collect', methods=["GET"])
 def collect():
-    ancestor = collect_info()
-    return ancestor
+    data = collect_info()
+    return data
 
+
+@app.route('/person', methods=["GET"])
+def ancestor():
+    info = Person()
+    return info
 # make a python function here and make another route that would call this function, the java script in the html should query the python
 # query.py is the main backend part of the entire project, standalone it should hold most of the logic, flask is the intermediary that allows it to be the front end
 
