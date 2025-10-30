@@ -34,6 +34,11 @@ def tree():
     return generation_tree
 
 
+@app.route("/", methods=["GET"])
+def root_ok():
+    return "OK", 200
+
+
 @app.route('/collect', methods=["GET"])
 def collect():
     data = collect_info()
