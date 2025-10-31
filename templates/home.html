@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Family Ancestry Project</h1>
+<p>Select an option below:</p>
+
+<form action="/input_relative" method="get">
+    <button type="submit">Input Relative</button>
+</form>
+
+<form action="/show_family_tree" method="get">
+    <button type="submit">Show Family Tree</button>
+</form>
+
+<form action="/show_relative" method="get">
+    <button type="submit">Show Relative</button>
+</form>
+{% end block %}

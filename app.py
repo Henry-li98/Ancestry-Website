@@ -46,9 +46,9 @@ def collect():
 
 
 @app.route('/person', methods=["GET"])
-def ancestor():
-    person_info = Person()
-    return person_info
+def save_info():
+    saved_info = Person()
+    return saved_info
 # make a python function here and make another route that would call this function, the java script in the html should query the python
 # query.py is the main backend part of the entire project, standalone it should hold most of the logic, flask is the intermediary that allows it to be the front end
 
