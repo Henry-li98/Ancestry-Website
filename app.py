@@ -30,8 +30,8 @@ if __name__ == "__main__":
 
 @app.route('/show_family_tree', methods=["GET"])
 def show_family_tree():
-    generation_tree = tree_display()
-    return render_template("family_tree.html"), generation_tree
+    tree_display()
+    return render_template("family_tree.html")
 
 
 @app.route("/", methods=["GET"])
@@ -41,15 +41,14 @@ def root_ok():
 
 @app.route('/input_relative', methods=["GET"])
 def collect():
-    data = collect_info()
-
-    return render_template("form.html"), data
+    collect_info()
+    return render_template("form.html")
 
 
 @app.route('/show_relative', methods=["GET"])
 def save_info():
-    saved_info = Person()
-    return saved_info, render_template("form.html")
+    Person()
+    return render_template("form.html")
 # make a python function here and make another route that would call this function, the java script in the html should query the python
 # query.py is the main backend part of the entire project, standalone it should hold most of the logic, flask is the intermediary that allows it to be the front end
 
