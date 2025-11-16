@@ -1,26 +1,27 @@
 import json
 import random
 
-
+#look into how IDs work and is it necessary to add more parameters to check for partner, mother nad father.
 class Person:
     def __init__(self, birthday, first_name, last_name, partner=None, mother=None, father=None):
         self.first_name = first_name
         self.last_name = last_name
         self.birthday = birthday
         self.id = random.randint(0, 999999)
-        self.mother = mother
-        self.father = father
-        self.partner = partner
+        self.mother_id = mother
+        self.father_id = father
+        self.partner_id = partner
 
     def save_to_json(self, file_name="ancestors.json"):
         user_data = {
             "f_name": self.first_name,
             "l_name": self.last_name,
             "b_day": self.birthday,
-            "partner": self.partner,
-            "mother": self.mother,
-            "father": self.father,
+            "partner": self.partner_id,
+            "mother": self.mother_id,
+            "father": self.father_id,
             "id": self.id
+
         }
         with open(file_name, "w") as file:
             json.dump(user_data, file, indent=4)
@@ -61,7 +62,8 @@ def tree_display(filename="ancestors.json"):
     with open(filename, "r") as file:
         data = json.load(file)
         print(data)
-
+        return data
+def organize(data)
 
 # display the previous x generations depending on how far back/forward the user wants to see
 # find a way scan/ sort the list in a way that checks that there is descendants/ancestors
