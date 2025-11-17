@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from query import tree_display, collect_info, Person
+from query import tree_display, collect_info, Person, load_people, convert_json
 from datetime import datetime
 
 app = Flask(__name__)
@@ -17,26 +17,13 @@ class Todo(db.Model):
         return '<Task %r>' % self.id
 
 
-@app.route('/')
-def home():
-    return render_template("home.html")
-
-
 if __name__ == "__main__":
     app.run(debug=True)
 
 
-# double check above on how to implement this
-
-@app.route('/show_family_tree', methods=["GET"])
-def show_family_tree():
-    tree_display()
-    return render_template("family_tree.html")
-
-
-@app.route("/", methods=["GET"])
-def root_ok():
-    return "OK", 200
+@app.route('/')
+def home():
+    return render_template("home.html")
 
 
 @app.route('/input_relative', methods=["GET"])
@@ -45,10 +32,31 @@ def collect():
     return render_template("form.html")
 
 
+@app.route('/load_people', methods=["GET"])
+def show_people():
+    people = load_people()
+    return people
+
+
+@app.route('/convert_json', methods=["GET"])
+def organize():
+    convert_json()
+    return render_template("tree.html")
+
+
 @app.route('/show_relative', methods=["GET"])
 def save_info():
     Person()
     return render_template("form.html")
+
+# double check above on how to implement this
+
+# @app.route('/show_family_tree', methods=["GET"])
+# def show_family_tree():
+#     tree_display()
+#     return render_template("family_tree.html")
+
+
 # make a python function here and make another route that would call this function, the java script in the html should query the python
 # query.py is the main backend part of the entire project, standalone it should hold most of the logic, flask is the intermediary that allows it to be the front end
 

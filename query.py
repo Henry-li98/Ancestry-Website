@@ -1,33 +1,8 @@
 import json
 import random
 
-#look into how IDs work and is it necessary to add more parameters to check for partner, mother nad father.
-class Person:
-    def __init__(self, birthday, first_name, last_name, partner=None, mother=None, father=None):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.birthday = birthday
-        self.id = random.randint(0, 999999)
-        self.mother_id = mother
-        self.father_id = father
-        self.partner_id = partner
 
-    def save_to_json(self, file_name="ancestors.json"):
-        user_data = {
-            "f_name": self.first_name,
-            "l_name": self.last_name,
-            "b_day": self.birthday,
-            "partner": self.partner_id,
-            "mother": self.mother_id,
-            "father": self.father_id,
-            "id": self.id
-
-        }
-        with open(file_name, "w") as file:
-            json.dump(user_data, file, indent=4)
-        print("information saved.")
-
-
+# look into how IDs work and is it necessary to add more parameters to check for partner, mother nad father.
 def collect_info():
     while True:
         first_name = input("Please input first name: ")
@@ -58,22 +33,49 @@ def collect_info():
             continue
 
 
-def tree_display(filename="ancestors.json"):
-    with open(filename, "r") as file:
-        data = json.load(file)
-        print(data)
-        return data
-def organize(data)
+class Person:
+    def __init__(self, birthday, first_name, last_name, partner=None, mother=None, father=None):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.birthday = birthday
+        self.id = random.randint(0, 999999)
+        self.mother_id = mother
+        self.father_id = father
+        self.partner_id = partner
 
-# display the previous x generations depending on how far back/forward the user wants to see
-# find a way scan/ sort the list in a way that checks that there is descendants/ancestors
-# def branch_find():
+    def save_to_json(self, file_name="ancestors.json"):
+        user_data = {
+            "f_name": self.first_name,
+            "l_name": self.last_name,
+            "b_day": self.birthday,
+            "partner": self.partner_id,
+            "mother": self.mother_id,
+            "father": self.father_id,
+            "id": self.id
+
+        }
+        with open(file_name, "w") as file:
+            json.dump(user_data, file, indent=4)
+        print("information saved.")
+
+
+def load_people(filename="ancestors.json"):
+    with open(filename, "r") as file:
+        return json.load(file)
+
+
+def convert_json(filename="ancestors.json"):
+    people = load_people(filename)
+    return [Person(**p) for p in people]
+
 
 def main():
     ancestor = collect_info()
     ancestor.save_to_json()
     print("displaying tree")
     tree_display()
+
+
 # use Pythonanywhere.com to host the server
 
 
