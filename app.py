@@ -1,12 +1,12 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from query import tree_display, collect_info, Person, load_people, convert_json
+from query import tree_display, collect_info, Person, load_people, convert_json, link_prep
 from datetime import datetime
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
-
+people = load_people()
 
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)

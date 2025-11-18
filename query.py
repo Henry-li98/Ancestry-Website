@@ -69,12 +69,17 @@ def convert_json(filename="ancestors.json"):
     return [Person(**p) for p in people]
 
 
+def link_prep(people):
+    id_map = {}
+    for p in people:
+        id_map[p["id"]] = p
+
+
 def main():
     ancestor = collect_info()
     ancestor.save_to_json()
     print("displaying tree")
-    tree_display()
-
+    # tree_display()
 
 # use Pythonanywhere.com to host the server
 
