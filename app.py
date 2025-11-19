@@ -34,8 +34,8 @@ def collect():
 
 @app.route('/load_people', methods=["GET"])
 def show_people():
-    people = load_people()
-    return people
+    loaded_people = load_people()
+    return loaded_people
 
 
 @app.route('/convert_json', methods=["GET"])
