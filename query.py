@@ -83,13 +83,16 @@ def main():
 
 
 def last_name_search(people, last_name):
-    search_last_name = last_name
-    for p in people.last_name:
-        l_name = [p["last_name"]] = p
-        if search_last_name == l_name:
-            return "MATCH"
-        else:
-            continue
+    matches = []
+    for p in people:
+        l_name = p["last_name"]
+        if last_name == l_name:
+            matches.append(p)
+    print("matches found", matches)
+    return matches
+
+
+
 # use Pythonanywhere.com to host the server
 
 
