@@ -34,7 +34,7 @@ def collect_info():
 
 
 class Person:
-    def __init__(self, birthday, first_name, last_name, partner=None, mother=None, father=None):
+    def __init__(self, first_name, last_name, birthday, partner=None, mother=None, father=None):
         self.first_name = first_name
         self.last_name = last_name
         self.birthday = birthday
@@ -60,8 +60,10 @@ class Person:
 
 
 def load_people(filename="ancestors.json"):
+    loaded = {}
     with open(filename, "r") as file:
-        return json.load(file)
+        filename.update(loaded)
+        return loaded
 
 
 def convert_json(filename="ancestors.json"):
@@ -73,6 +75,7 @@ def link_prep(people):
     id_map = {}
     for p in people:
         id_map[p["id"]] = p
+    return id_map
 
 
 def main():
